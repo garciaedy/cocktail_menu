@@ -1,5 +1,11 @@
-import React from "react";
+import React, { Component } from 'react'
 
-export default function SingleCocktail() {
-  return <h1>single cocktail page</h1>;
+export default class componentName extends Component {
+  render() {
+    return (
+      <div>
+        
+      </div>
+    )
+  }
 }

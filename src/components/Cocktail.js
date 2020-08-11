@@ -1,5 +1,11 @@
-import React from "react";
+import React, { Component } from 'react'
 
-export default function Cocktail() {
-  return <h1>cocktail component</h1>;
+export default class componentName extends Component {
+  render() {
+    return (
+      <div>
+        
+      </div>
+    )
+  }
 }
