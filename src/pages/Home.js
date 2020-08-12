@@ -13,14 +13,27 @@ export default function Home() {
     React.useEffect(() =>{
       async function getDrinks(){
 try {
-  const response =await  fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=
-  ${searchTerm}`).then(response => response.json())
-  .then(data => setCocktails(data.drinks));
+  const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=
+  ${searchTerm}`);
+
+  const data = await response.json();
+  const {drinks} = data;
+  if(drinks){
+    const newCocktails = drinks.map(item =>{
+      const {idDrink, strDrink, strDrinkThumb, strAlcoholic,
+         strGlass} = item;
+         return {id:idDrink,name:strDrink,image:strDrinkThumb,
+        info:strAlcoholic,glass:strGlass}
+    }) ;
+    setCocktails(newCocktails);
+  }else{
+    setCocktails([])
+  }
+
 } catch (error) {
-  
+  console.log(error);
+  } 
 }
-     
-      }
 
     },[searchTerm]);
 
